@@ -19,12 +19,18 @@ loadMonoCounter()
       if (line.includes(createLine)) break;
     }
 
+    // quebra o script em pacotes
     let j = 0;
-    while(!lines[index].includes(";") || j <= 1000) {
+    while(!line.includes(";")) {
       j++;
       line = lines[index + j];
-      if (line == undefined) break;
-      console.log(line);
+      // console.log(line);
+
+      if (j >= 1000) {
+        console.log("\t\t\t\t\t\tLOCO");
+        index = index + j;
+        j = 0;
+      }
     }
 
     console.log("terminou")
